@@ -21,16 +21,13 @@ To activate the plugin, add it to your videojs settings object:
 ```html
 <script>
 // initialize video.js
-var video = videojs('video',{plugins:{thumbnails:{}}});
+var video = videojs('video',{plugins:{thumbnails:{vtt:<webVTT.file>}}});
 </script>
 ```
 
 The thumbnails need to be added with a VTT file. For this file, the [specification used by JW Player](http://support.jwplayer.com/customer/portal/articles/1407439-adding-preview-thumbnails) applies.
-The VTT file is added as a metadata track to the video object, for example:
+The VTT file is added as option (see above). The option "vtt" is mandatory.
 
-```html
-<track kind="metadata" src="oceans.vtt"></track>
-```
 
 Full object example:
 
@@ -42,7 +39,6 @@ Full object example:
        poster='http://video-js.zencoder.com/oceans-clip.jpg'
        controls>
   <source src='http://video-js.zencoder.com/oceans-clip.mp4' type='video/mp4' />
-  <track kind="metadata" src="oceans.vtt"></track>
 </video>
 ```
 
@@ -51,11 +47,12 @@ If your thumbnails do not include specified width and height in the VTT file (vi
 ```html
 <script>
 // initialize video.js
-var video = videojs('video',{plugins:{thumbnails:{width:120,height:90}}});
+var video = videojs('video',{plugins:{thumbnails:{vtt:oceans-clip.vtt,width:120,height:90}}});
 </script>
 ```
+By default the VTT and the images reside in the same directory as the video.
 
-You can add an optional basePath if you want to use images hosted on another domain
+You can add an optional basePath if you want to use images hosted on another domain or path
 ```html
 <script>
 // initialize video.js
