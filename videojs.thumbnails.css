@@ -1,9 +1,27 @@
 /* a wrapper element that tracks the mouse vertically */
 .vjs-thumbnail-holder {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   left: -1000px;
   bottom: 1.3em;
+}
+
+.vjs-thumbnail-text-div {
+  display: table;
+}
+
+.vjs-thumbnail-text {
+  position: absolute;
+  font-family: VideoJS;
+  font-size: 11px;
+  z-index: 3;
+  background-color: #00000080;
+  bottom: 0px;
+  text-align: center;
+  transition: opacity .2s ease;
+  -webkit-transition: opacity .2s ease;
+  -moz-transition: opacity .2s ease;
+  -mz-transition: opacity .2s ease;
 }
 
 /* the thumbnail image itself */
@@ -11,6 +29,7 @@
   position: absolute;
   left: 0;
   opacity: 0;
+  z-index: 2;
   transition: opacity .2s ease;
   -webkit-transition: opacity .2s ease;
   -moz-transition: opacity .2s ease;
@@ -26,7 +45,13 @@
 }
 
 /* ... but hide the thumbnail when hovering directly over it */
-.vjs-progress-control:hover .vjs-thumbnail:hover,
-.vjs-progress-control:active .vjs-thumbnail:active {
+.vjs-progress-control:hover .vjs-thumbnail-text:hover,
+.vjs-progress-control:active .vjs-thumbnail-text:active {
   opacity: 0;
+}
+
+.video-js .vjs-mouse-display:after {
+  top: auto;
+  bottom: 3.5em;
+  visibility: hidden;
 }

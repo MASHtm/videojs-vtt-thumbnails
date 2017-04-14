@@ -26,11 +26,10 @@ around to seek. Give it a shot:</p>
        poster='http://video-js.zencoder.com/oceans-clip.jpg'
        controls>
   <source src='http://video-js.zencoder.com/oceans-clip.mp4' type='video/mp4' />
-  <track kind="metadata" src="oceans.vtt"></track>
 </video>
 <script>
 // initialize video.js
-var video = videojs('video',{plugins:{thumbnails:{}}});
+var video = videojs('video',{plugins:{thumbnails:{width:105,height:60,vtt:"/oceans-clip.vtt"}}});
 </script>
 </body>
 </html>
