@@ -63,9 +63,9 @@
     };
 
   /**
-   * register the thubmnails plugin
+   * register the thumbnails plugin
    */
-  videojs.plugin('thumbnails', function(options) {
+  thumbNailer = function(options) {
     var div, settings, img, player, progressControl, duration, moveListener, moveCancel, thumbTrack;
     settings = extend({}, defaults, options);
     player = this;
@@ -169,7 +169,8 @@
           ((event.explicitOriginalTarget.ClassName !== 'vjs-mouse-display') &&
           (event.explicitOriginalTarget.ClassName !== 'vjs-progress-holder vjs-slider vjs-slider-horizontal')))  {
       console.log("done");
-      div.style.left = '-1000px'; }
+//      div.style.left = '-1000px'; 
+      }
     };
 
     player.ready(function() {
@@ -178,7 +179,7 @@
       id: 'thumbnails',
       kind: 'metadata',
       src: options.vtt,
-    });
+    }, false);
     trackEl.addEventListener('load', function onLoad() {
       trackEl.removeEventListener('load', onLoad);
       thumbTrack = player.textTracks().getTrackById('thumbnails');
@@ -237,5 +238,11 @@
 
     }, true);
 
-  });
+  };
+
+  if (videojs.registerPlugin) {
+    videojs.registerPlugin('thumbnails', thumbNailer);
+  } else {
+    videojs.plugin('thumbnails', thumbNailer);
+  }
 })();

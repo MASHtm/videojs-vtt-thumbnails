@@ -50,6 +50,10 @@
   opacity: 0;
 }
 
+.video-js .vjs-progress-control .vjs-mouse-display {
+  z-index: 2;
+}
+
 .video-js .vjs-mouse-display:after {
   top: auto;
   bottom: 3.5em;
